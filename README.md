@@ -25,9 +25,6 @@ The workflow includes:
 ├── HeartFailure_RNASeq.Rproj # RStudio project file
 └── README.md # Project description and instructions
 ```
-markdown
-Copy
-Edit
 
 ---
 
@@ -51,40 +48,42 @@ Edit
    ./scripts/download_qc.sh
 Align reads and generate gene counts
 
-bash
-Copy
-Edit
+
 ./scripts/align_count.sh
 Run differential expression analysis in R
 
-bash
-Copy
-Edit
+
 Rscript scripts/deseq2_analysis.R
-Outputs
-results/featurecounts/counts.txt: Gene count matrix
 
-results/deseq2_results.csv: DESeq2 differential expression results
+## Outputs
 
-results/pca_plot.png: PCA plot of samples
+- `results/featurecounts/counts.txt`: Gene count matrix
+- `results/deseq2_results.csv`: DESeq2 differential expression results
+- `results/pca_plot.png`: PCA plot of samples
+- `results/volcano_plot.png`: Volcano plot of significant genes
+- `results/heatmap_top20.png`: Heatmap of top differentially expressed genes
 
-results/volcano_plot.png: Volcano plot of significant genes
+---
 
-results/heatmap_top20.png: Heatmap of top differentially expressed genes
+## Reference Files
 
-Reference Files
-This pipeline requires the human reference genome (FASTA) and gene annotation (GTF). These files are not included in this repository due to size constraints. Please download them from GENCODE and place them in the ref/ folder.
+This pipeline requires the human reference genome (FASTA) and gene annotation (GTF). These files are not included in this repository due to size constraints. Please download them from [GENCODE](https://www.gencodegenes.org/human/) and place them in the `ref/` folder.
 
-Recommended files:
+**Recommended files:**
+- `GRCh38.primary_assembly.genome.fa`
+- `gencode.v44.annotation.gtf`
 
-GRCh38.primary_assembly.genome.fa
+---
 
-gencode.v44.annotation.gtf
+## Citation
 
-Citation
-If you use or adapt this pipeline, please cite the original dataset GSE71613 and acknowledge all tools and packages according to their respective licenses.
+If you use or adapt this pipeline, please cite the original dataset [GSE71613](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71613) and acknowledge all tools and packages according to their respective licenses.
 
-License
+---
+
+## License
+
 This project is provided for academic and educational purposes. Feel free to fork and adapt as needed.
+
 
 
