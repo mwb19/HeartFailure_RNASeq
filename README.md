@@ -22,7 +22,8 @@ The workflow includes:
 ├── results/ # STAR alignments, featureCounts output, DESeq2 results, plots
 ├── scripts/ # Shell and R scripts for each step
 ├── HeartFailure_RNASeq.Rproj # RStudio project file
-└── README.md # Project description and instructions```
+└── README.md # Project description and instructs```
+
 
 ---
 
@@ -40,44 +41,44 @@ The workflow includes:
 
 ## How to Run the Pipeline
 
-1. Download and QC raw FASTQ files:
+**1. Download and QC raw FASTQ files:**
 
+```bash
+./scripts/download_qc.sh
+./scripts/align_count.sh
+Rscript scripts/deseq2_analysis.R
 
-2. Align reads and generate counts:
-
-
-3. Perform differential expression analysis:
-
-
----
 
 ## Outputs
+results/featurecounts/counts.txt: Gene count matrix
 
-- `results/featurecounts/counts.txt`: gene count matrix
-- `results/deseq2_results.csv`: DESeq2 differential expression results
-- `results/pca_plot.png`: PCA plot of samples
-- `results/volcano_plot.png`: Volcano plot of significant genes
-- `results/heatmap_top20.png`: Heatmap of top differentially expressed genes
+results/deseq2_results.csv: DESeq2 differential expression results
 
----
+results/pca_plot.png: PCA plot of samples
 
-## Reference Files
+results/volcano_plot.png: Volcano plot of significant genes
 
-The pipeline requires the human reference genome (FASTA) and gene annotation (GTF). These are not included due to file size. Download from [GENCODE](https://www.gencodegenes.org/human/) and store in the `ref/` folder.
+results/heatmap_top20.png: Heatmap of top differentially expressed genes
+
+##Reference Files
+This pipeline requires the human reference genome (FASTA) and gene annotation (GTF). These files are not included in this repository due to size constraints. Please download them from GENCODE and place them in the ref/ folder.
 
 Recommended files:
-- `GRCh38.primary_assembly.genome.fa`
-- `gencode.v44.annotation.gtf`
 
----
+GRCh38.primary_assembly.genome.fa
+
+gencode.v44.annotation.gtf
 
 ## Citation
+If you use or adapt this pipeline, please cite the original dataset GSE71613 and acknowledge all tools and packages according to their respective licenses.
 
-If you use or adapt this pipeline, please cite the original dataset [GSE71613](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71613) and acknowledge the tools and packages according to their licenses.
+## License
+This project is provided for academic and educational purposes. Feel free to fork and adapt as needed.
 
 ---
 
-## License
+##  **How to use it**
 
-This project is provided for academic and educational purposes. Fork and adapt as needed.
-
+⃣ Open your `README.md`:
+```bash
+nano README.md
