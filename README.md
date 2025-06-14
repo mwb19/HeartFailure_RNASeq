@@ -1,81 +1,76 @@
-Heart Failure RNA-seq Analysis Pipeline (GSE71613)
-Overview
-This repository contains a reproducible bioinformatics pipeline for analyzing RNA-seq data from human heart failure samples, based on GEO dataset GSE71613. The workflow performs data download, quality control, read alignment, gene counting, and differential expression analysis using DESeq2.
+# Heart Failure RNA-seq Analysis Pipeline (GSE71613)
 
-Project Structure
-perl
-Copy
-Edit
-HeartFailure_RNASeq/
-├── data/                 # Raw and trimmed FASTQ files (local only, ignored)
-├── qc/                   # Quality control reports
-├── ref/                  # Reference genome and GTF (local only, ignored)
-├── results/              # STAR alignments, featureCounts output, DESeq2 results, plots
-├── scripts/              # Shell and R scripts for each step
-├── HeartFailure_RNASeq.Rproj  # RStudio project file
-└── README.md             # Project description and instructions
-Requirements
-Bash shell
+## Overview
+This repository provides a reproducible RNA-seq analysis pipeline for investigating gene expression differences between failing and non-failing human heart tissues, using publicly available data from [GSE71613](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71613).
 
-FastQC
+The workflow includes:
+- Downloading raw reads from GEO/SRA
+- Quality control with FastQC and fastp
+- Read alignment using STAR
+- Gene-level counting with featureCounts
+- Differential expression analysis with DESeq2
+- Visualization of results (PCA, volcano plot, heatmap)
 
-fastp
+---
 
-SRA Toolkit
+## Project Structure
 
-STAR aligner
+```text HeartFailure_RNASeq/ ├── data/ # Raw and trimmed FASTQ files (local only, ignored) ├── qc/ # Quality control reports ├── ref/ # Reference genome and GTF (local only, ignored) ├── results/ # STAR alignments, featureCounts output, DESeq2 results, plots ├── scripts/ # Shell and R scripts for each step ├── HeartFailure_RNASeq.Rproj # RStudio project file └── README.md # Project description and instructions ```
 
-Subread/featureCounts
+---
 
-R with DESeq2, pheatmap, ggplot2
+## Requirements
 
-How to Run
-Download and QC raw FASTQ files:
+- Bash shell
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
+- [fastp](https://github.com/OpenGene/fastp)
+- [SRA Toolkit](https://github.com/ncbi/sra-tools)
+- [STAR aligner](https://github.com/alexdobin/STAR)
+- [Subread (featureCounts)](http://subread.sourceforge.net/)
+- R with packages: `DESeq2`, `pheatmap`, `ggplot2`
 
-bash
-Copy
-Edit
-./scripts/download_qc.sh
-Align reads and count genes:
+---
 
-bash
-Copy
-Edit
-./scripts/align_count.sh
-Run differential expression analysis in R:
+## How to Run the Pipeline
 
-bash
-Copy
-Edit
-Rscript scripts/deseq2_analysis.R
-Outputs will appear in the results/ folder:
+1. Download and QC raw FASTQ files:
 
-featurecounts/counts.txt
 
-deseq2_results.csv
+2. Align reads and generate counts:
 
-PCA plot, volcano plot, and heatmap
 
-Reference Files
-Note: The human reference genome FASTA and GTF files (hg38.fa and hg38.gtf) are required locally but are ignored in this repository due to size. Download them directly from GENCODE before running the pipeline.
+3. Perform differential expression analysis:
 
-Tools and Methods
-fasterq-dump — retrieve FASTQ files from SRA
 
-fastp and FastQC — read trimming and quality checks
+---
 
-STAR — genome alignment
+## Outputs
 
-featureCounts — gene-level read counting
+- `results/featurecounts/counts.txt`: gene count matrix
+- `results/deseq2_results.csv`: DESeq2 differential expression results
+- `results/pca_plot.png`: PCA plot of samples
+- `results/volcano_plot.png`: Volcano plot of significant genes
+- `results/heatmap_top20.png`: Heatmap of top differentially expressed genes
 
-DESeq2 — differential expression analysis in R
+---
 
-pheatmap and ggplot2 — visualization
+## Reference Files
 
-Citation
-If you use this pipeline or adapt it, please cite the source dataset GSE71613 and acknowledge this workflow in your work.
+The pipeline requires the human reference genome (FASTA) and gene annotation (GTF). These are not included due to file size. Download from [GENCODE](https://www.gencodegenes.org/human/) and store in the `ref/` folder.
 
-License
-This project is provided for educational and research purposes. Feel free to fork and adapt.
+Recommended files:
+- `GRCh38.primary_assembly.genome.fa`
+- `gencode.v44.annotation.gtf`
 
+---
+
+## Citation
+
+If you use or adapt this pipeline, please cite the original dataset [GSE71613](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71613) and acknowledge the tools and packages according to their licenses.
+
+---
+
+## License
+
+This project is provided for academic and educational purposes. Fork and adapt as needed.
 
