@@ -16,7 +16,7 @@ The workflow includes:
 
 ## Project Structure
 
-HeartFailure_RNASeq/
+```HeartFailure_RNASeq/
 ├── data/ # Raw and trimmed FASTQ files (local only, ignored)
 ├── qc/ # Quality control reports
 ├── ref/ # Reference genome and GTF (local only, ignored)
@@ -24,7 +24,7 @@ HeartFailure_RNASeq/
 ├── scripts/ # Shell and R scripts for each step
 ├── HeartFailure_RNASeq.Rproj # RStudio project file
 └── README.md # Project description and instructions
-
+```
 markdown
 Copy
 Edit
@@ -86,3 +86,5 @@ If you use or adapt this pipeline, please cite the original dataset GSE71613 and
 
 License
 This project is provided for academic and educational purposes. Feel free to fork and adapt as needed.
+
+
