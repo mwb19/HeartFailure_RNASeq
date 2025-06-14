@@ -75,6 +75,20 @@ This pipeline requires the human reference genome (FASTA) and gene annotation (G
 
 ---
 
+## Example Plots
+
+**PCA Plot**
+
+![PCA plot](results/pca_plot.png)
+
+**Volcano Plot**
+
+![Volcano plot](results/volcano_plot.png)
+
+**Heatmap (Top 20 Genes)**
+
+![Heatmap top 20 genes](results/heatmap_top20.png)
+
 ## Citation
 
 If you use or adapt this pipeline, please cite the original dataset [GSE71613](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE71613) and acknowledge all tools and packages according to their respective licenses.
@@ -84,6 +98,4 @@ If you use or adapt this pipeline, please cite the original dataset [GSE71613](h
 ## License
 
 This project is provided for academic and educational purposes. Feel free to fork and adapt as needed.
-
-
 
