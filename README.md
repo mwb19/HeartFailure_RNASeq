@@ -1,50 +1,81 @@
-# 🫀 Heart Failure RNA-seq Analysis — GSE71613
+Heart Failure RNA-seq Analysis Pipeline (GSE71613)
+Overview
+This repository contains a reproducible bioinformatics pipeline for analyzing RNA-seq data from human heart failure samples, based on GEO dataset GSE71613. The workflow performs data download, quality control, read alignment, gene counting, and differential expression analysis using DESeq2.
 
-## 📌 Overview
-This project analyzes RNA-seq data comparing **failing** vs **non-failing human heart tissue**, using GEO dataset **GSE71613**.
-It demonstrates a full pipeline from raw FASTQ download to DESeq2 differential expression analysis.
-
----
-
-## 📂 Project Structure
-
+Project Structure
+perl
+Copy
+Edit
 HeartFailure_RNASeq/
-├── data/ # Raw & trimmed FASTQ files
-├── qc/ # Quality control reports
-├── ref/ # Reference genome FASTA & GTF
-├── results/ # Alignments, counts, plots
-├── scripts/ # Shell & R scripts
-├── HeartFailure_RNASeq.Rproj
-└── README.md
----
+├── data/                 # Raw and trimmed FASTQ files (local only, ignored)
+├── qc/                   # Quality control reports
+├── ref/                  # Reference genome and GTF (local only, ignored)
+├── results/              # STAR alignments, featureCounts output, DESeq2 results, plots
+├── scripts/              # Shell and R scripts for each step
+├── HeartFailure_RNASeq.Rproj  # RStudio project file
+└── README.md             # Project description and instructions
+Requirements
+Bash shell
 
-## ✅ How to run
+FastQC
 
-```bash
-# 1) Download & QC
+fastp
+
+SRA Toolkit
+
+STAR aligner
+
+Subread/featureCounts
+
+R with DESeq2, pheatmap, ggplot2
+
+How to Run
+Download and QC raw FASTQ files:
+
+bash
+Copy
+Edit
 ./scripts/download_qc.sh
+Align reads and count genes:
 
-# 2) Align & count
+bash
+Copy
+Edit
 ./scripts/align_count.sh
+Run differential expression analysis in R:
 
-# 3) DESeq2 analysis
+bash
+Copy
+Edit
 Rscript scripts/deseq2_analysis.R
+Outputs will appear in the results/ folder:
 
+featurecounts/counts.txt
 
----
+deseq2_results.csv
 
-### 📌 **Step 3 — Save and exit nano**
+PCA plot, volcano plot, and heatmap
 
-Inside nano:
-- Press `CTRL + O` → then `Enter` to save
-- Then `CTRL + X` to exit nano
+Reference Files
+Note: The human reference genome FASTA and GTF files (hg38.fa and hg38.gtf) are required locally but are ignored in this repository due to size. Download them directly from GENCODE before running the pipeline.
 
----
+Tools and Methods
+fasterq-dump — retrieve FASTQ files from SRA
 
-### 📌 **Step 4 — Add, commit, push**
+fastp and FastQC — read trimming and quality checks
 
-```bash
-git add README.md
-git commit -m "Add README.md"
-git push
+STAR — genome alignment
+
+featureCounts — gene-level read counting
+
+DESeq2 — differential expression analysis in R
+
+pheatmap and ggplot2 — visualization
+
+Citation
+If you use this pipeline or adapt it, please cite the source dataset GSE71613 and acknowledge this workflow in your work.
+
+License
+This project is provided for educational and research purposes. Feel free to fork and adapt.
+
 
